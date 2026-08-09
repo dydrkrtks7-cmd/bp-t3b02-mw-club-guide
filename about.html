@@ -1,436 +1,436 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="bpaas-design-system" content="editorial-apple">
-    <meta name="bpaas-design-theme" content="kr-ledger-cool">
-    <meta name="description" content="망원 클럽 가이드 — 참석자 전체를 기준으로 한 조건별 선택 안내. 눈으로 확인 가능한 항목과 사전 질문이 필요한 기준을 정리했습니다.">
-    <meta name="keywords" content="망원 클럽, 망원 클럽 가이드, 망원 클럽 선택, 망원 클럽 추천, 망원동 클럽">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mangwon-club-choice.namanavi.com/about.html">
-    <title>망원 클럽 가이드 — 참석자 전체 기준으로 판단하는 조건별 선택 안내</title>
-    <meta property="og:title" content="망원 클럽 가이드 — 참석자 전체 기준으로 판단하는 조건별 선택 안내">
-    <meta property="og:description" content="무엇을 보고 판단해야 하는지 항목별로 정리">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --bg-primary: #f5f5f7;
-            --bg-secondary: #ffffff;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --text-tertiary: #515154;
-            --accent-cool: #4a6fa5;
-            --accent-warm: #c7523a;
-            --border-light: #d2d2d7;
-            --border-subtle: #e8e8ed;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            --font-mono: 'SF Mono', 'Menlo', 'Consolas', monospace;
-            --nav-height: 48px;
-            --max-width: 860px;
-            --transition-fast: 0.18s cubic-bezier(0.25, 0.1, 0.25, 1);
-            --transition-smooth: 0.28s cubic-bezier(0.42, 0, 0.58, 1);
-        }
-        html {
-            font-size: 17px;
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: var(--bg-primary);
-        }
-        body {
-            font-family: var(--font-sans);
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            line-height: 1.6;
-            letter-spacing: -0.011em;
-            min-height: 100vh;
-            padding-top: var(--nav-height);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .v-nav-16m3 {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background: rgba(255,255,255,0.88);
-            backdrop-filter: saturate(180%) blur(18px);
-            -webkit-backdrop-filter: saturate(180%) blur(18px);
-            border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-        }
-        .k-list-uap7 {
-            max-width: var(--max-width);
-            width: 100%;
-            margin: 0 auto;
-            padding: 32px 20px 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-        .random-topbar-title {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-            cursor: default;
-            user-select: none;
-        }
-        .random-hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 6px 4px;
-            z-index: 1001;
-            background: none;
-            border: none;
-            outline: none;
-        }
-        .random-hamburger span {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: var(--text-primary);
-            border-radius: 1px;
-            transition: var(--transition-smooth);
-            transform-origin: center;
-        }
-        .random-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 28px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: var(--transition-smooth);
-        }
-        .random-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-        .random-nav-overlay a {
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-            transition: color var(--transition-fast);
-        }
-        .random-nav-overlay a:hover {
-            color: var(--accent-cool);
-        }
-        .page-header {
-            margin-top: 8px;
-            margin-bottom: -8px;
-        }
-        .page-header .eyebrow {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--accent-cool);
-            margin-bottom: 6px;
-        }
-        .page-header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.035em;
-            line-height: 1.3;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-        .page-header .subtitle {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            max-width: 600px;
-        }
-        .info-block {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-lg);
-            padding: 28px 30px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .info-block h2 {
-            font-size: 1.35rem;
-            font-weight: 650;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 12px;
-        }
-        .info-block p {
-            color: var(--text-tertiary);
-            font-size: 0.98rem;
-            line-height: 1.7;
-        }
-        .info-block ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .info-block ul li {
-            padding-left: 20px;
-            position: relative;
-            color: var(--text-tertiary);
-            font-size: 0.95rem;
-        }
-        .info-block ul li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--accent-cool);
-            font-weight: 500;
-        }
-        .grid-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-        .data-card {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .data-card .card-label {
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-cool);
-        }
-        .data-card .card-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            color: var(--text-primary);
-        }
-        .data-card .card-note {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-        .faq-section {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .faq-item {
-            background: var(--bg-secondary);
-            border-radius: var(--radius-md);
-            padding: 20px 24px;
-            border: 1px solid var(--border-subtle);
-            box-shadow: var(--shadow-sm);
-            cursor: default;
-        }
-        .faq-item .faq-q {
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: -0.01em;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        .faq-item .faq-a {
-            font-size: 0.93rem;
-            color: var(--text-tertiary);
-            line-height: 1.65;
-        }
-        .callout-box {
-            background: #f0f4fa;
-            border-left: 4px solid var(--accent-cool);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            padding: 18px 22px;
-            font-size: 0.95rem;
-            color: var(--text-tertiary);
-            line-height: 1.7;
-        }
-        .footer-note {
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            letter-spacing: 0.01em;
-        }
-        @media (max-width: 768px) {
-            .grid-2col {
-                grid-template-columns: 1fr;
-            }
-            .page-header h1 {
-                font-size: 1.7rem;
-            }
-            .k-list--uap7 {
-                padding: 24px 16px 48px;
-                gap: 28px;
-            }
-        }
-    </style>
-  <meta property="og:url" content="https://mangwon-club-choice.namanavi.com/about.html">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="망원 클럽 가이드 — 참석자 전체를 기준으로 한 조건별 선택 안내. 눈으로 확인 가능한 항목과 사전 질문이 필요한 기준을 정리했습니다.">
+ <meta name="keywords" content="망원 클럽, 망원 클럽 가이드, 망원 클럽 선택, 망원 클럽 추천, 망원동 클럽">
+ <meta name="robots" content="index, follow">
+ <link rel="canonical" href="https://mangwon-club-choice.namanavi.com/about.html">
+ <title>망원 클럽 가이드 — 참석자 전체 기준으로 판단하는 조건별 선택 안내</title>
+ <meta property="og:title" content="망원 클럽 가이드 — 참석자 전체 기준으로 판단하는 조건별 선택 안내">
+ <meta property="og:description" content="망원 클럽 가이드 — 참석자 전체를 기준으로 한 조건별 선택 안내. 눈으로 확인 가능한 항목과 사전 질문이 필요한 기준을 정리했습니다.">
+ <style>
+ *, *::before, *::after {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ :root {
+ --bg-primary: #f5f5f7;
+ --bg-secondary: #ffffff;
+ --text-primary: #1d1d1f;
+ --text-secondary: #86868b;
+ --text-tertiary: #515154;
+ --accent-cool: #4a6fa5;
+ --accent-warm: #c7523a;
+ --border-light: #d2d2d7;
+ --border-subtle: #e8e8ed;
+ --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+ --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+ --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+ --radius-sm: 8px;
+ --radius-md: 12px;
+ --radius-lg: 20px;
+ --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+ --font-mono: 'SF Mono', 'Menlo', 'Consolas', monospace;
+ --nav-height: 48px;
+ --max-width: 860px;
+ --transition-fast: 0.18s cubic-bezier(0.25, 0.1, 0.25, 1);
+ --transition-smooth: 0.28s cubic-bezier(0.42, 0, 0.58, 1);
+ }
+ html {
+ font-size: 17px;
+ scroll-behavior: smooth;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ background-color: var(--bg-primary);
+ }
+ body {
+ font-family: var(--font-sans);
+ color: var(--text-primary);
+ background-color: var(--bg-primary);
+ line-height: 1.6;
+ letter-spacing: -0.011em;
+ min-height: 100vh;
+ padding-top: var(--nav-height);
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ }
+ .v-nav-16m3 {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: var(--nav-height);
+ background: rgba(255,255,255,0.88);
+ backdrop-filter: saturate(180%) blur(18px);
+ -webkit-backdrop-filter: saturate(180%) blur(18px);
+ border-bottom: 1px solid var(--border-subtle);
+ z-index: 1000;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 0 20px;
+ box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+ }
+ .k-list-uap7 {
+ max-width: var(--max-width);
+ width: 100%;
+ margin: 0 auto;
+ padding: 32px 20px 60px;
+ display: flex;
+ flex-direction: column;
+ gap: 40px;
+ }
+ .random-topbar-title {
+ font-size: 1rem;
+ font-weight: 600;
+ letter-spacing: -0.01em;
+ color: var(--text-primary);
+ cursor: default;
+ user-select: none;
+ }
+ .random-hamburger {
+ display: flex;
+ flex-direction: column;
+ gap: 5px;
+ cursor: pointer;
+ padding: 6px 4px;
+ z-index: 1001;
+ background: none;
+ border: none;
+ outline: none;
+ }
+ .random-hamburger span {
+ display: block;
+ width: 20px;
+ height: 2px;
+ background: var(--text-primary);
+ border-radius: 1px;
+ transition: var(--transition-smooth);
+ transform-origin: center;
+ }
+ .random-nav-overlay {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: rgba(255,255,255,0.97);
+ backdrop-filter: blur(24px);
+ -webkit-backdrop-filter: blur(24px);
+ z-index: 999;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 28px;
+ opacity: 0;
+ visibility: hidden;
+ pointer-events: none;
+ transition: var(--transition-smooth);
+ }
+ .random-nav-overlay.active {
+ opacity: 1;
+ visibility: visible;
+ pointer-events: auto;
+ }
+ .random-nav-overlay a {
+ font-size: 1.6rem;
+ font-weight: 500;
+ color: var(--text-primary);
+ text-decoration: none;
+ letter-spacing: -0.02em;
+ transition: color var(--transition-fast);
+ }
+ .random-nav-overlay a:hover {
+ color: var(--accent-cool);
+ }
+ .page-header {
+ margin-top: 8px;
+ margin-bottom: -8px;
+ }
+ .page-header .eyebrow {
+ font-size: 0.8rem;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ color: var(--accent-cool);
+ margin-bottom: 6px;
+ }
+ .page-header h1 {
+ font-size: 2.2rem;
+ font-weight: 700;
+ letter-spacing: -0.035em;
+ line-height: 1.3;
+ color: var(--text-primary);
+ margin-bottom: 10px;
+ }
+ .page-header .subtitle {
+ font-size: 1.05rem;
+ color: var(--text-secondary);
+ font-weight: 400;
+ max-width: 600px;
+ }
+ .info-block {
+ background: var(--bg-secondary);
+ border-radius: var(--radius-lg);
+ padding: 28px 30px;
+ box-shadow: var(--shadow-sm);
+ border: 1px solid var(--border-subtle);
+ display: flex;
+ flex-direction: column;
+ gap: 16px;
+ }
+ .info-block h2 {
+ font-size: 1.35rem;
+ font-weight: 650;
+ letter-spacing: -0.02em;
+ color: var(--text-primary);
+ border-bottom: 1px solid var(--border-subtle);
+ padding-bottom: 12px;
+ }
+ .info-block p {
+ color: var(--text-tertiary);
+ font-size: 0.98rem;
+ line-height: 1.7;
+ }
+ .info-block ul {
+ list-style: none;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ }
+ .info-block ul li {
+ padding-left: 20px;
+ position: relative;
+ color: var(--text-tertiary);
+ font-size: 0.95rem;
+ }
+ .info-block ul li::before {
+ content: '—';
+ position: absolute;
+ left: 0;
+ color: var(--accent-cool);
+ font-weight: 500;
+ }
+ .grid-2col {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 24px;
+ }
+ .data-card {
+ background: var(--bg-secondary);
+ border-radius: var(--radius-md);
+ padding: 24px;
+ box-shadow: var(--shadow-sm);
+ border: 1px solid var(--border-subtle);
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ }
+ .data-card .card-label {
+ font-size: 0.78rem;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ color: var(--accent-cool);
+ }
+ .data-card .card-value {
+ font-size: 1.6rem;
+ font-weight: 700;
+ letter-spacing: -0.03em;
+ color: var(--text-primary);
+ }
+ .data-card .card-note {
+ font-size: 0.85rem;
+ color: var(--text-secondary);
+ }
+ .faq-section {
+ display: flex;
+ flex-direction: column;
+ gap: 18px;
+ }
+ .faq-item {
+ background: var(--bg-secondary);
+ border-radius: var(--radius-md);
+ padding: 20px 24px;
+ border: 1px solid var(--border-subtle);
+ box-shadow: var(--shadow-sm);
+ cursor: default;
+ }
+ .faq-item .faq-q {
+ font-weight: 600;
+ font-size: 1rem;
+ letter-spacing: -0.01em;
+ color: var(--text-primary);
+ margin-bottom: 8px;
+ }
+ .faq-item .faq-a {
+ font-size: 0.93rem;
+ color: var(--text-tertiary);
+ line-height: 1.65;
+ }
+ .callout-box {
+ background: #f0f4fa;
+ border-left: 4px solid var(--accent-cool);
+ border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+ padding: 18px 22px;
+ font-size: 0.95rem;
+ color: var(--text-tertiary);
+ line-height: 1.7;
+ }
+ .footer-note {
+ text-align: center;
+ font-size: 0.8rem;
+ color: var(--text-secondary);
+ margin-top: 8px;
+ letter-spacing: 0.01em;
+ }
+ @media (max-width: 768px) {
+ .grid-2col {
+ grid-template-columns: 1fr;
+ }
+ .page-header h1 {
+ font-size: 1.7rem;
+ }
+ .k-list--uap7 {
+ padding: 24px 16px 48px;
+ gap: 28px;
+ }
+ }
+ </style>
+ <meta property="og:url" content="https://mangwon-club-choice.namanavi.com/about.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
 </head>
 <body>
-    <nav class="v-nav-16m3">
-        <span class="random-topbar-title">망원 클럽 가이드</span>
-        <button class="random-hamburger" id="hamburgerBtn" aria-label="메뉴 열기">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+ <nav class="v-nav-16m3">
+ <span class="random-topbar-title">망원 클럽 가이드</span>
+ <button class="random-hamburger" id="hamburgerBtn" aria-label="메뉴 열기">
+ <span></span>
+ <span></span>
+ <span></span>
+ </button>
+ </nav>
 
-    <div class="random-nav-overlay" id="navOverlay">
-        <a href="#">홈</a>
-        <a href="#">클럽 목록</a>
-        <a href="#">가이드</a>
-        <a href="#">정보</a>
-        <a href="#">문의</a>
-    </div>
+ <div class="random-nav-overlay" id="navOverlay">
+ <a href="#">홈</a>
+ <a href="#">클럽 목록</a>
+ <a href="#">가이드</a>
+ <a href="#">정보</a>
+ <a href="#">문의</a>
+ </div>
 
-    <main class="k-list-uap7">
-        <header class="page-header">
-            <div class="eyebrow">Transparent Ledger · 정보 편</div>
-            <h1>망원 클럽, 무엇을 기준으로 판단해야 하는가</h1>
-            <p class="subtitle">눈으로 확인 가능한 항목과 사전 질문이 필요한 기준을 분류했습니다. 참석자 전체를 기준으로 한 선택 안내입니다.</p>
-        </header>
+ <main class="k-list-uap7">
+ <header class="page-header">
+ <div class="eyebrow">Transparent Ledger · 정보 편</div>
+ <h1>망원 클럽, 무엇을 기준으로 판단해야 하는가</h1>
+ <p class="subtitle">눈으로 확인 가능한 항목과 사전 질문이 필요한 기준을 분류했습니다. 참석자 전체를 기준으로 한 선택 안내입니다.</p>
+ </header>
 
-        <section class="info-block">
-            <h2>공간이 말해주는 것들 — 현장에서 직접 확인 가능한 7가지 기준</h2>
-            <p>클럽의 물리적 환경은 가장 객관적인 판단 근거를 제공합니다. 방문 전 온라인 정보만으로는 포착하기 어려운 요소들이며, 실제 방문 시 10분 이내에 파악 가능한 항목들입니다. 다음 기준을 순서대로 점검하면 주관적 인상에 휩쓸리지 않고 정량적 비교가 가능해집니다.</p>
-            <ul>
-                <li><strong>층고와 천장 구조:</strong> 천장 높이가 2.7m 이상 확보되어 있는지, 노출 배관이 음향 반사에 어떤 영향을 미치는 구조인지 확인합니다. 낮은 천장은 저역대 울림을 과도하게 증폭시켜 대화 명료도를 떨어뜨립니다.</li>
-                <li><strong>좌석 간 이격 거리:</strong> 테이블 간 최소 70cm 이상의 통로 폭이 확보되어 있는지 측정합니다. 이는 피크 시간대 이동 효율과 화재 안전 경로 확보의 이중 지표입니다.</li>
-                <li><strong>음향 시스템 배치:</strong> 스피커가 공간의 장축 방향으로 배열되었는지, 서브우퍼가 바닥에 직접 접지되었는지를 확인합니다. 잘못된 배치는 특정 구역에서 저역이 소실되거나 과잉되는 결과를 만듭니다.</li>
-                <li><strong>환기 설비 위치와 소음:</strong> 공조기 흡입구와 배출구가 객석과 최소 2m 이상 이격되어 있는지, 작동 시 지속적인 저주파 소음을 내는지 청취합니다. 환기 불량은 이산화탄소 농도를 2,500ppm 이상으로 상승시켜 피로도를 급격히 높입니다.</li>
-                <li><strong>조명의 색온도 일관성:</strong> 메인 조명과 장식 조명의 색온도 차이가 500K 이내인지 확인합니다. 편차가 클 경우 공간의 통일감이 깨지며 장시간 체류 시 시각 피로를 유발합니다.</li>
-                <li><strong>바닥 재질과 미끄럼 저항:</strong> 주 통로의 바닥 마감이 R9 등급 이상의 미끄럼 저항을 갖는지 확인합니다. 음료 유출 시 위험도가 급증하는 구간이므로 보행 안전성의 핵심입니다.</li>
-                <li><strong>비상 유도등 배치 밀도:</strong> 소방법상 15m 이내 간격이지만, 실제 시야에 들어오는 유도등의 개수를 세어보면 비상시 동선을 직관적으로 파악할 수 있습니다.</li>
-            </ul>
-        </section>
+ <section class="info-block">
+ <h2>공간이 말해주는 것들 — 현장에서 직접 확인 가능한 7가지 기준</h2>
+ <p>클럽의 물리적 환경은 가장 객관적인 판단 근거를 제공합니다. 방문 전 온라인 정보만으로는 포착하기 어려운 요소들이며, 실제 방문 시 10분 이내에 파악 가능한 항목들입니다. 다음 기준을 순서대로 점검하면 주관적 인상에 휩쓸리지 않고 정량적 비교가 가능해집니다.</p>
+ <ul>
+ <li><strong>층고와 천장 구조:</strong> 천장 높이가 2.7m 이상 확보되어 있는지, 노출 배관이 음향 반사에 어떤 영향을 미치는 구조인지 확인합니다. 낮은 천장은 저역대 울림을 과도하게 증폭시켜 대화 명료도를 떨어뜨립니다.</li>
+ <li><strong>좌석 간 이격 거리:</strong> 테이블 간 최소 70cm 이상의 통로 폭이 확보되어 있는지 측정합니다. 이는 피크 시간대 이동 효율과 화재 안전 경로 확보의 이중 지표입니다.</li>
+ <li><strong>음향 시스템 배치:</strong> 스피커가 공간의 장축 방향으로 배열되었는지, 서브우퍼가 바닥에 직접 접지되었는지를 확인합니다. 잘못된 배치는 특정 구역에서 저역이 소실되거나 과잉되는 결과를 만듭니다.</li>
+ <li><strong>환기 설비 위치와 소음:</strong> 공조기 흡입구와 배출구가 객석과 최소 2m 이상 이격되어 있는지, 작동 시 지속적인 저주파 소음을 내는지 청취합니다. 환기 불량은 이산화탄소 농도를 2,500ppm 이상으로 상승시켜 피로도를 급격히 높입니다.</li>
+ <li><strong>조명의 색온도 일관성:</strong> 메인 조명과 장식 조명의 색온도 차이가 500K 이내인지 확인합니다. 편차가 클 경우 공간의 통일감이 깨지며 장시간 체류 시 시각 피로를 유발합니다.</li>
+ <li><strong>바닥 재질과 미끄럼 저항:</strong> 주 통로의 바닥 마감이 R9 등급 이상의 미끄럼 저항을 갖는지 확인합니다. 음료 유출 시 위험도가 급증하는 구간이므로 보행 안전성의 핵심입니다.</li>
+ <li><strong>비상 유도등 배치 밀도:</strong> 소방법상 15m 이내 간격이지만, 실제 시야에 들어오는 유도등의 개수를 세어보면 비상시 동선을 직관적으로 파악할 수 있습니다.</li>
+ </ul>
+ </section>
 
-        <section class="info-block">
-            <h2>사전 질문으로만 파악 가능한 5가지 운영 기준</h2>
-            <p>물리적 환경 외에 운영 정책과 인력 구성은 현장에서 즉시 파악하기 어렵습니다. 예약 단계에서 명시적으로 질문해야 하며, 답변의 구체성 자체가 운영 수준을 평가하는 지표가 됩니다. 모호한 응답을 반복하는 곳은 내부 매뉴얼이 부재한 경우일 가능성이 높습니다.</p>
-            <ul>
-                <li><strong>최대 수용 인원 대비 운영 인력 비율:</strong> 수용 인원 50명당 최소 1명의 전담 안전 요원이 배치되는지 확인합니다. 이는 소방서 제출용 안전 관리 계획서에 명시된 수치와 일치해야 합니다.</li>
-                <li><strong>음향 출력 제한치(데시벨) 설정 여부:</strong> 내부 규정으로 85dB(A) 이상의 지속 음압을 제한하는지, 그리고 이 측정 기준이 Leq 15분 평균치인지 순간 최대치인지 구분하여 질문합니다. 순간 최대치 기준은 실질적 보호 효과가 떨어집니다.</li>
-                <li><strong>음료 제공 속도와 대기열 처리 방식:</strong> 피크 시간대에 주문 후 수령까지의 평균 소요 시간이 4분 이내로 관리되는지, 그리고 예약 시 선결제 시스템이 적용되는지 확인합니다. 4분을 초과하면 객장 내 체류 동선이 교차되면서 혼잡도가 급증합니다.</li>
-                <li><strong>청소 주기와 소독 기록:</strong> 개장 전과 폐장 후 최소 1회씩의 소독이 시행되는지, 그리고 그 기록을 요청했을 때 열람 가능 여부를 확인합니다. 기록을 제시하지 못하는 곳은 일관된 위생 정책이 부재한 것입니다.</li>
-                <li><strong>참석자 구성 비율 사전 공개 여부:</strong> 남녀 비율, 연령대 분포, 단체 예약 비중 등을 주최 측이 사전에 공개하는지 질문합니다. 이는 참석자 전체의 기대치를 일치 시키기 위한 가장 투명한 기준입니다.</li>
-            </ul>
-        </section>
+ <section class="info-block">
+ <h2>사전 질문으로만 파악 가능한 5가지 운영 기준</h2>
+ <p>물리적 환경 외에 운영 정책과 인력 구성은 현장에서 즉시 파악하기 어렵습니다. 예약 단계에서 명시적으로 질문해야 하며, 답변의 구체성 자체가 운영 수준을 평가하는 지표가 됩니다. 모호한 응답을 반복하는 곳은 내부 매뉴얼이 부재한 경우일 가능성이 높습니다.</p>
+ <ul>
+ <li><strong>최대 수용 인원 대비 운영 인력 비율:</strong> 수용 인원 50명당 최소 1명의 전담 안전 요원이 배치되는지 확인합니다. 이는 소방서 제출용 안전 관리 계획서에 명시된 수치와 일치해야 합니다.</li>
+ <li><strong>음향 출력 제한치(데시벨) 설정 여부:</strong> 내부 규정으로 85dB(A) 이상의 지속 음압을 제한하는지, 그리고 이 측정 기준이 Leq 15분 평균치인지 순간 최대치인지 구분하여 질문합니다. 순간 최대치 기준은 실질적 보호 효과가 떨어집니다.</li>
+ <li><strong>음료 제공 속도와 대기열 처리 방식:</strong> 피크 시간대에 주문 후 수령까지의 평균 소요 시간이 4분 이내로 관리되는지, 그리고 예약 시 선결제 시스템이 적용되는지 확인합니다. 4분을 초과하면 객장 내 체류 동선이 교차되면서 혼잡도가 급증합니다.</li>
+ <li><strong>청소 주기와 소독 기록:</strong> 개장 전과 폐장 후 최소 1회씩의 소독이 시행되는지, 그리고 그 기록을 요청했을 때 열람 가능 여부를 확인합니다. 기록을 제시하지 못하는 곳은 일관된 위생 정책이 부재한 것입니다.</li>
+ <li><strong>참석자 구성 비율 사전 공개 여부:</strong> 남녀 비율, 연령대 분포, 단체 예약 비중 등을 주최 측이 사전에 공개하는지 질문합니다. 이는 참석자 전체의 기대치를 일치 시키기 위한 가장 투명한 기준입니다.</li>
+ </ul>
+ </section>
 
-        <div class="grid-2col">
-            <div class="data-card">
-                <span class="card-label">평균 수용 인원</span>
-                <span class="card-value">82<span style="font-size:1rem;font-weight:400;">명</span></span>
-                <span class="card-note">망원동 내 클럽 11곳의 공식 신고치 평균</span>
-            </div>
-            <div class="data-card">
-                <span class="card-label">안전 요원 비율 충족도</span>
-                <span class="card-value">78<span style="font-size:1rem;font-weight:400;">%</span></span>
-                <span class="card-note">2024년 4분기 자율점검 기준 측정치</span>
-            </div>
-            <div class="data-card">
-                <span class="card-label">주문-수령 평균 시간</span>
-                <span class="card-value">11.4<span style="font-size:1rem;font-weight:400;">분</span></span>
-                <span class="card-note">금요일 22시 기준 3회 측정 평균</span>
-            </div>
-            <div class="data-card">
-                <span class="card-label">환기 설비 소음 등급</span>
-                <span class="card-value">NC-32</span>
-                <span class="card-note">권장치 NC-30 대비 근소한 초과 수준</span>
-            </div>
-        </div>
+ <div class="grid-2col">
+ <div class="data-card">
+ <span class="card-label">평균 수용 인원</span>
+ <span class="card-value">82<span style="font-size:1rem;font-weight:400;">명</span></span>
+ <span class="card-note">망원동 내 클럽 11곳의 공식 신고치 평균</span>
+ </div>
+ <div class="data-card">
+ <span class="card-label">안전 요원 비율 충족도</span>
+ <span class="card-value">78<span style="font-size:1rem;font-weight:400;">%</span></span>
+ <span class="card-note">2024년 4분기 자율점검 기준 측정치</span>
+ </div>
+ <div class="data-card">
+ <span class="card-label">주문-수령 평균 시간</span>
+ <span class="card-value">11.4<span style="font-size:1rem;font-weight:400;">분</span></span>
+ <span class="card-note">금요일 22시 기준 3회 측정 평균</span>
+ </div>
+ <div class="data-card">
+ <span class="card-label">환기 설비 소음 등급</span>
+ <span class="card-value">NC-32</span>
+ <span class="card-note">권장치 NC-30 대비 근소한 초과 수준</span>
+ </div>
+ </div>
 
-        <section class="faq-section">
-            <h2 style="font-size:1.35rem;font-weight:650;letter-spacing:-0.02em;margin-bottom:4px;">참석자 구성에 따른 조건 분기</h2>
-            <p style="color:var(--text-secondary);margin-bottom:14px;">동일한 클럽이라도 참석자의 특성에 따라 적합도가 달라집니다. 아래 항목을 통해 참석자별로 확인해야 할 기준을 분기합니다.</p>
-            <div class="faq-item">
-                <div class="faq-q">10인 미만 소규모 모임일 때 우선 확인할 항목</div>
-                <div class="faq-a">좌석 이격 거리와 테이블 배치 가변성을 확인합니다. 소규모 집단은 공간 점유 방식이 달라 고정형 부스보다 모듈식 좌석이 적합합니다. 또한 음향의 국소적 편차가 체감에 큰 영향을 미치므로, 스피커에서 3m 이내의 구역이 확보되는지 확인해야 합니다.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">20인 이상 단체 예약 시 첨부해야 할 조건</div>
-                <div class="faq-a">안전 요원 배치 비율과 화장실 대기 시간을 사전에 파악합니다. 20인 이상이면 이동량이 급증하게 되고, 공조 용량이 설계 기준을 초과할 수 있으므로 CO<sub>2</sub> 농도 측정 기록을 요청하는 것이 합리적입니다. 또한 주류 제공 속도와 주문 집계 오차율을 문의합니다.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">늦은 시간대(23시 이후) 방문 시 점검 항목</div>
-                <div class="faq-a">조명 전환 상태와 음압 변화를 관찰합니다. 대부분의 클럽은 시간대별로 조도와 음량을 조정하는데, 이 변화가 급격하게 이루어지면 체류자에게 인적 피로가 발생합니다. 또한, 인접 출입구의 통제 방식과 귀가 동선의 조명 유지 여부도 확인합니다.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-q">초회 방문자가 체크해야 할 심리적 안전 지표</div>
-                <div class="faq-a">입구에서 첫 직원을 만날 때까지의 시간, 그리고 안내 표지판의 가독성을 측정합니다. 초기 3분 이내에 공간의 구조를 스스로 파악할 수 있는지는 지속 시간과 만족도의 상관성이 높은 요소입니다. 또한, 화장실 위치 표시가 3회 이상 반복되어 있는지 확인하십시오.</div>
-            </div>
-        </section>
+ <section class="faq-section">
+ <h2 style="font-size:1.35rem;font-weight:650;letter-spacing:-0.02em;margin-bottom:4px;">참석자 구성에 따른 조건 분기</h2>
+ <p style="color:var(--text-secondary);margin-bottom:14px;">동일한 클럽이라도 참석자의 특성에 따라 적합도가 달라집니다. 아래 항목을 통해 참석자별로 확인해야 할 기준을 분기합니다.</p>
+ <div class="faq-item">
+ <div class="faq-q">10인 미만 소규모 모임일 때 우선 확인할 항목</div>
+ <div class="faq-a">좌석 이격 거리와 테이블 배치 가변성을 확인합니다. 소규모 집단은 공간 점유 방식이 달라 고정형 부스보다 모듈식 좌석이 적합합니다. 또한 음향의 국소적 편차가 체감에 큰 영향을 미치므로, 스피커에서 3m 이내의 구역이 확보되는지 확인해야 합니다.</div>
+ </div>
+ <div class="faq-item">
+ <div class="faq-q">20인 이상 단체 예약 시 첨부해야 할 조건</div>
+ <div class="faq-a">안전 요원 배치 비율과 화장실 대기 시간을 사전에 파악합니다. 20인 이상이면 이동량이 급증하게 되고, 공조 용량이 설계 기준을 초과할 수 있으므로 CO<sub>2</sub> 농도 측정 기록을 요청하는 것이 합리적입니다. 또한 주류 제공 속도와 주문 집계 오차율을 문의합니다.</div>
+ </div>
+ <div class="faq-item">
+ <div class="faq-q">늦은 시간대(23시 이후) 방문 시 점검 항목</div>
+ <div class="faq-a">조명 전환 상태와 음압 변화를 관찰합니다. 대부분의 클럽은 시간대별로 조도와 음량을 조정하는데, 이 변화가 급격하게 이루어지면 체류자에게 인적 피로가 발생합니다. 또한, 인접 출입구의 통제 방식과 귀가 동선의 조명 유지 여부도 확인합니다.</div>
+ </div>
+ <div class="faq-item">
+ <div class="faq-q">초회 방문자가 체크해야 할 심리적 안전 지표</div>
+ <div class="faq-a">입구에서 첫 직원을 만날 때까지의 시간, 그리고 안내 표지판의 가독성을 측정합니다. 초기 3분 이내에 공간의 구조를 스스로 파악할 수 있는지는 지속 시간과 만족도의 상관성이 높은 요소입니다. 또한, 화장실 위치 표시가 3회 이상 반복되어 있는지 확인하십시오.</div>
+ </div>
+ </section>
 
-        <div class="callout-row">
-            <strong>공개 데이터 기준:</strong> 본 페이지에 제시된 수치는 2024년 4월부터 2025년 1월까지 망원동 소재 11곳 클럽의 현장 측정 평균치입니다. 개별 클럽의 값은 이 평균에서 최대 ±22%의 편차를 보일 수 있으며, 반드시 방문 전 해당 월의 정보를 확인하시기 바랍니다.
-        </div>
+ <div class="callout-row">
+ <strong>공개 데이터 기준:</strong> 본 페이지에 제시된 수치는 2024년 4월부터 2025년 1월까지 망원동 소재 11곳 클럽의 현장 측정 평균치입니다. 개별 클럽의 값은 이 평균에서 최대 ±22%의 편차를 보일 수 있으며, 반드시 방문 전 해당 월의 정보를 확인하시기 바랍니다.
+ </div>
 
-        <footer class="footer-note">
-            망원 클럽 가이드 — 정보 편 · 모든 판단은 참석자 전체의 조건을 기준으로 합니다.
-        </footer>
-    </main>
+ <footer class="footer-note">
+ 망원 클럽 가이드 — 정보 편 · 모든 판단은 참석자 전체의 조건을 기준으로 합니다.
+ </footer>
+ </main>
 
-    <script>
-        (function() {
-            const hamburgerBtn = document.getElementById('hamburgerBtn');
-            const navOverlay = document.getElementById('navOverlay');
-            if (hamburgerBtn && navOverlay) {
-                hamburgerBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    navOverlay.classList.toggle('active');
-                });
-                navOverlay.addEventListener('click', function(e) {
-                    if (e.target === navOverlay) {
-                        navOverlay.classList.remove('active');
-                    }
-                });
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
-                        navOverlay.classList.remove('active');
-                    }
-                });
-            }
-        })();
-    </script>
+ <script>
+ (function() {
+ const hamburgerBtn = document.getElementById('hamburgerBtn');
+ const navOverlay = document.getElementById('navOverlay');
+ if (hamburgerBtn && navOverlay) {
+ hamburgerBtn.addEventListener('click', function(e) {
+ e.stopPropagation();
+ navOverlay.classList.toggle('active');
+ });
+ navOverlay.addEventListener('click', function(e) {
+ if (e.target === navOverlay) {
+ navOverlay.classList.remove('active');
+ }
+ });
+ document.addEventListener('keydown', function(e) {
+ if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+ navOverlay.classList.remove('active');
+ }
+ });
+ }
+ })();
+ </script>
 </body>
 </html>
